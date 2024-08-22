@@ -1,0 +1,36 @@
+﻿  CsvFile.cpp
+  dump_proto.cpp
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\dump_proto.cpp(292,32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\dump_proto.cpp(219,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\dump_proto.cpp(225,3): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\dump_proto.cpp(227,3): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\dump_proto.cpp(257,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\dump_proto.cpp(494,19): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 6 has type 'int'
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\dump_proto.cpp(453,4): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\dump_proto.cpp(454,4): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\dump_proto.cpp(464,4): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\dump_proto.cpp(564,7): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\dump_proto.cpp(606,7): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\dump_proto.cpp(683,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\dump_proto.cpp(689,3): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\dump_proto.cpp(691,3): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\dump_proto.cpp(878,4): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\dump_proto.cpp(879,4): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\dump_proto.cpp(1001,7): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\dump_proto.cpp(1046,7): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  ItemCSVReader.cpp
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\ItemCSVReader.cpp(258,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\ItemCSVReader.cpp(287,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\ItemCSVReader.cpp(322,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\ItemCSVReader.cpp(348,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\ItemCSVReader.cpp(529,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\ItemCSVReader.cpp(554,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\dump_proto\ItemCSVReader.cpp(578,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  lzo.cpp
+  tea.cpp
+  Previous IPDB not found, fall back to full compilation.
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  Generating code
+  All 984 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  dump_proto.vcxproj -> E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\Release\dump_proto.exe
