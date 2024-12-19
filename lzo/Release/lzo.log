@@ -19,7 +19,7 @@
   lzo1b_cc.c
   lzo1b_d1.c
   lzo1b_d2.c
-  Compiling...
+  正在编译...
   lzo1b_rr.c
   lzo1b_xx.c
   lzo1c_1.c
@@ -40,7 +40,7 @@
   lzo1c_xx.c
   lzo1f_1.c
   lzo1f_9x.c
-  Compiling...
+  正在编译...
   lzo1f_d1.c
   lzo1f_d2.c
   lzo1x_1.c
@@ -61,7 +61,7 @@
   lzo1z_9x.c
   lzo1z_d1.c
   lzo1z_d2.c
-  Compiling...
+  正在编译...
   lzo1z_d3.c
   lzo2a_9x.c
   lzo2a_d1.c
@@ -72,4 +72,4 @@
   lzo_ptr.c
   lzo_str.c
   lzo_util.c
-  lzo.vcxproj -> E:\forrasok\ulthar_SF_V2\SSSRCCC\client_src\DumpProto\Release\lzo.lib
+  lzo.vcxproj -> D:\GITHUB_test\DumpProto\Release\lzo.lib
