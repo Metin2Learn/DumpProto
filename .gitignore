@@ -1,16 +1,8 @@
 /.idea
 /.vs/
 
-/Release/**/*.log
-/Release/**/*.tlog
-
 /vs_files/**/*.log
 /vs_files/**/*.tlog
-/dump_proto/Release/**/*.log
-/dump_proto/Release/**/*.tlog
-/lzo/Release/**/*.log
-/lzo/Release/**/*.tlog
-/vs_files/**/Debug
-/vs_files/**/Distribute
-/vs_files/**/Release
-/Release/dump_proto.exe
+/dump_proto/Release/
+/lzo/Release/
+/Release/
