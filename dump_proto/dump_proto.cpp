@@ -9,7 +9,7 @@
 
 #include "lzo.h"
 
-//À©µµ¿ìexeÆÄÀÏ ¸¸µé¸é¼­ »õ·Î Ãß°¡ : ÆÄÀÏ ÀĞ¾î¿Ã ¼ö ÀÖµµ·Ï ÇÏ¿´´Ù.
+//ìœˆë„ìš°exeíŒŒì¼ ë§Œë“¤ë©´ì„œ ìƒˆë¡œ ì¶”ê°€ : íŒŒì¼ ì½ì–´ì˜¬ ìˆ˜ ìˆë„ë¡ í•˜ì˜€ë‹¤.
 #include "CsvFile.h"
 #include "ItemCSVReader.h"
 
@@ -217,13 +217,13 @@ bool Set_Proto_Mob_Table(TMobTable *mobTable, cCsvTable &csvTable, std::map<int,
 
 	mobTable->dwVnum               = atoi(csvTable.AsStringByIndex(col++));
 	strncpy(mobTable->szName, csvTable.AsStringByIndex(col++), CHARACTER_NAME_MAX_LEN);
-	//³×ÀÓ ÆÄÀÏÀÌ Á¸ÀçÇÏ¸é Á¤º¸¸¦ ÀĞ¾î¿È.
+	//ë„¤ì„ íŒŒì¼ì´ ì¡´ì¬í•˜ë©´ ì •ë³´ë¥¼ ì½ì–´ì˜´.
 	map<int,const char*>::iterator it;
 	it = nameMap.find(mobTable->dwVnum);
 	if (it != nameMap.end()) {
 		const char * localeName = it->second;
 		strncpy(mobTable->szLocaleName, localeName, sizeof (mobTable->szLocaleName));
-	} else {	//³×ÀÓ ÆÄÀÏÀÌ ¾øÀ¸¸é, ÇÑ±ÛÀ» ±×´ë·Î »ç¿ë.
+	} else {	//ë„¤ì„ íŒŒì¼ì´ ì—†ìœ¼ë©´, í•œê¸€ì„ ê·¸ëŒ€ë¡œ ì‚¬ìš©.
 		strncpy(mobTable->szLocaleName, mobTable->szName, sizeof (mobTable->szLocaleName));
 	}
 	//4. RANK
@@ -300,36 +300,36 @@ bool Set_Proto_Mob_Table(TMobTable *mobTable, cCsvTable &csvTable, std::map<int,
 
 bool BuildMobTable()
 {
-	//%%% <ÇÔ¼ö ¼³¸í> %%%//
-	//1. ¿ä¾à : 'mob_proto.txt', 'mob_proto_test.txt', 'mob_names.txt' ÆÄÀÏÀ» ÀĞ°í,
-	//		m_pMobTable ¸¦ ±¸¼ºÇÑ´Ù.
-	//2. ¼ø¼­
-	//	1)'mob_names.txt' ÆÄÀÏÀ» ÀĞ¾î¼­ vnum:name ¸ÊÀ» ¸¸µç´Ù.
-	//	2)'mob_proto_test.txt' ÆÄÀÏÀ» ÀĞ¾î¼­,
-	//		test_mob_table ¸¦ ¸¸µé°í,
-	//		vnum:TMobTable ¸ÊÀ» ¸¸µç´Ù.
-	//	3)'mob_proto.txt' ÆÄÀÏÀ» ÀĞ°í, m_pMobTable¸¦ ±¸¼ºÇÑ´Ù.
-	//		test_mob_table¿¡ ÀÖ´Â vnumÀº Å×½ºÆ® µ¥ÀÌÅÍ¸¦ ³Ö´Â´Ù.
-	//	4)test_mob_table µ¥ÀÌÅÍÁß¿¡, m_pMobTable ¿¡ ¾ø´Â µ¥ÀÌÅÍ¸¦ Ãß°¡ÇÑ´Ù.
-	//3. Å×½ºÆ®
-	//	1)'mob_proto.txt' Á¤º¸°¡ m_pMobTable¿¡ Àß µé¾î°¬´ÂÁö. -> ¿Ï·á
-	//	2)'mob_names.txt' Á¤º¸°¡ m_pMobTable¿¡ Àß µé¾î°¬´ÂÁö. -> ¿Ï·á
-	//	3)'mob_proto_test.txt' ¿¡¼­ [°ãÄ¡´Â] Á¤º¸°¡ m_pMobTable ¿¡ Àß µé¾î°¬´ÂÁö. -> ¿Ï·á
-	//	4)'mob_proto_test.txt' ¿¡¼­ [»õ·Î¿î] Á¤º¸°¡ m_pMobTable ¿¡ Àß µé¾î°¬´ÂÁö. -> ¿Ï·á
+	//%%% <í•¨ìˆ˜ ì„¤ëª…> %%%//
+	//1. ìš”ì•½ : 'mob_proto.txt', 'mob_proto_test.txt', 'mob_names.txt' íŒŒì¼ì„ ì½ê³ ,
+	//		m_pMobTable ë¥¼ êµ¬ì„±í•œë‹¤.
+	//2. ìˆœì„œ
+	//	1)'mob_names.txt' íŒŒì¼ì„ ì½ì–´ì„œ vnum:name ë§µì„ ë§Œë“ ë‹¤.
+	//	2)'mob_proto_test.txt' íŒŒì¼ì„ ì½ì–´ì„œ,
+	//		test_mob_table ë¥¼ ë§Œë“¤ê³ ,
+	//		vnum:TMobTable ë§µì„ ë§Œë“ ë‹¤.
+	//	3)'mob_proto.txt' íŒŒì¼ì„ ì½ê³ , m_pMobTableë¥¼ êµ¬ì„±í•œë‹¤.
+	//		test_mob_tableì— ìˆëŠ” vnumì€ í…ŒìŠ¤íŠ¸ ë°ì´í„°ë¥¼ ë„£ëŠ”ë‹¤.
+	//	4)test_mob_table ë°ì´í„°ì¤‘ì—, m_pMobTable ì— ì—†ëŠ” ë°ì´í„°ë¥¼ ì¶”ê°€í•œë‹¤.
+	//3. í…ŒìŠ¤íŠ¸
+	//	1)'mob_proto.txt' ì •ë³´ê°€ m_pMobTableì— ì˜ ë“¤ì–´ê°”ëŠ”ì§€. -> ì™„ë£Œ
+	//	2)'mob_names.txt' ì •ë³´ê°€ m_pMobTableì— ì˜ ë“¤ì–´ê°”ëŠ”ì§€. -> ì™„ë£Œ
+	//	3)'mob_proto_test.txt' ì—ì„œ [ê²¹ì¹˜ëŠ”] ì •ë³´ê°€ m_pMobTable ì— ì˜ ë“¤ì–´ê°”ëŠ”ì§€. -> ì™„ë£Œ
+	//	4)'mob_proto_test.txt' ì—ì„œ [ìƒˆë¡œìš´] ì •ë³´ê°€ m_pMobTable ì— ì˜ ë“¤ì–´ê°”ëŠ”ì§€. -> ì™„ë£Œ
 	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^//
 
 	fprintf(stderr, "sizeof(TMobTable): %u\n", sizeof(TMobTable));
 
 
 	//==============================================================//
-	//======localº° ¸ó½ºÅÍ ÀÌ¸§À» ÀúÀåÇÏ°í ÀÖ´Â [¸Ê] vnum:name======//
+	//======localë³„ ëª¬ìŠ¤í„° ì´ë¦„ì„ ì €ì¥í•˜ê³  ìˆëŠ” [ë§µ] vnum:name======//
 	//==============================================================//
 	bool isNameFile = true;
 	map<int,const char*> localMap;
 	cCsvTable nameData;
 	if(!nameData.Load("mob_names.txt",'\t'))
 	{
-		fprintf(stderr, "mob_names.txt ÆÄÀÏÀ» ÀĞ¾î¿ÀÁö ¸øÇß½À´Ï´Ù\n");
+		fprintf(stderr, "mob_names.txt íŒŒì¼ì„ ì½ì–´ì˜¤ì§€ ëª»í–ˆìŠµë‹ˆë‹¤\n");
 		isNameFile = false;
 	} else {
 		nameData.Next();
@@ -340,41 +340,41 @@ bool BuildMobTable()
 	//______________________________________________________________//
 
 	//=========================================//
-	//======¸ó½ºÅÍµéÀÇ vnumÀ» ÀúÀåÇÒ [¼Â]======//
-	//  *Å×½ºÆ®¿ë ÆÄÀÏÀ» »õ·Î ÀĞ¾î¿Ã¶§,        //
-	//  1. ±âÁ¸¿¡ ÀÖ´ø µ¥ÀÌÅÍÀÎÁö È®ÀÏÇÒ¶§ »ç¿ë//
+	//======ëª¬ìŠ¤í„°ë“¤ì˜ vnumì„ ì €ì¥í•  [ì…‹]======//
+	//  *í…ŒìŠ¤íŠ¸ìš© íŒŒì¼ì„ ìƒˆë¡œ ì½ì–´ì˜¬ë•Œ,        //
+	//  1. ê¸°ì¡´ì— ìˆë˜ ë°ì´í„°ì¸ì§€ í™•ì¼í• ë•Œ ì‚¬ìš©//
 	//=========================================//
 	set<int> vnumSet;
 	//_________________________________________//
 	
 	//==================================================//
-	//	2)'mob_proto_test.txt' ÆÄÀÏÀ» ÀĞ¾î¼­,
-	//		test_mob_table ¸¦ ¸¸µé°í,
-	//		vnum:TMobTable ¸ÊÀ» ¸¸µç´Ù.
+	//	2)'mob_proto_test.txt' íŒŒì¼ì„ ì½ì–´ì„œ,
+	//		test_mob_table ë¥¼ ë§Œë“¤ê³ ,
+	//		vnum:TMobTable ë§µì„ ë§Œë“ ë‹¤.
 	//==================================================//
 	map<DWORD, TMobTable *> test_map_mobTableByVnum;
 
-	//1. ÆÄÀÏ ÀĞ¾î¿À±â.
+	//1. íŒŒì¼ ì½ì–´ì˜¤ê¸°.
 	cCsvTable test_data;
 	if(!test_data.Load("mob_proto_test.txt",'\t'))
 	{
-		fprintf(stderr, "mob_proto_test.txt ÆÄÀÏÀ» ÀĞ¾î¿ÀÁö ¸øÇß½À´Ï´Ù\n");
+		fprintf(stderr, "mob_proto_test.txt íŒŒì¼ì„ ì½ì–´ì˜¤ì§€ ëª»í–ˆìŠµë‹ˆë‹¤\n");
 		//return false;
 	} else {
-		test_data.Next();	//¼³¸í ·Î¿ì ³Ñ¾î°¡±â.
+		test_data.Next();	//ì„¤ëª… ë¡œìš° ë„˜ì–´ê°€ê¸°.
 
-		//2. Å×½ºÆ® ¸ó½ºÅÍ Å×ÀÌºí »ı¼º.
+		//2. í…ŒìŠ¤íŠ¸ ëª¬ìŠ¤í„° í…Œì´ë¸” ìƒì„±.
 		TMobTable * test_mob_table = NULL;
 		int test_MobTableSize = test_data.m_File.GetRowCount()-1;
 		test_mob_table = new TMobTable[test_MobTableSize];
 		memset(test_mob_table, 0, sizeof(TMobTable) * test_MobTableSize);
 
-		//3. Å×½ºÆ® ¸ó½ºÅÍ Å×ÀÌºí¿¡ °ªÀ» ³Ö°í, ¸Ê¿¡±îÁö ³Ö±â.
+		//3. í…ŒìŠ¤íŠ¸ ëª¬ìŠ¤í„° í…Œì´ë¸”ì— ê°’ì„ ë„£ê³ , ë§µì—ê¹Œì§€ ë„£ê¸°.
 		while(test_data.Next()) {
 			
 			if (!Set_Proto_Mob_Table(test_mob_table, test_data, localMap))
 			{
-				fprintf(stderr, "¸÷ ÇÁ·ÎÅä Å×ÀÌºí ¼ÂÆÃ ½ÇÆĞ.\n");			
+				fprintf(stderr, "ëª¹ í”„ë¡œí†  í…Œì´ë¸” ì…‹íŒ… ì‹¤íŒ¨.\n");			
 			}
 			
 
@@ -386,25 +386,25 @@ bool BuildMobTable()
 	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^//
 	
 
-	//ÆÄÀÏ ÀĞ¾î¿À±â.
+	//íŒŒì¼ ì½ì–´ì˜¤ê¸°.
 	cCsvTable data;
 	if(!data.Load("mob_proto.txt",'\t'))
 	{
-		fprintf(stderr, "mob_proto.txt ÆÄÀÏÀ» ÀĞ¾î¿ÀÁö ¸øÇß½À´Ï´Ù\n");
+		fprintf(stderr, "mob_proto.txt íŒŒì¼ì„ ì½ì–´ì˜¤ì§€ ëª»í–ˆìŠµë‹ˆë‹¤\n");
 		return false;
 	}
-	data.Next(); //¸Ç À­ÁÙ Á¦¿Ü (¾ÆÀÌÅÛ Ä®·³À» ¼³¸íÇÏ´Â ºÎºĞ)
+	data.Next(); //ë§¨ ìœ—ì¤„ ì œì™¸ (ì•„ì´í…œ ì¹¼ëŸ¼ì„ ì„¤ëª…í•˜ëŠ” ë¶€ë¶„)
 
 
 
-	//===== ¸÷ Å×ÀÌºí »ı¼º=====//
+	//===== ëª¹ í…Œì´ë¸” ìƒì„±=====//
 	if (m_pMobTable)
 	{
 		delete m_pMobTable;
 		m_pMobTable = NULL;
 	}
 
-	//»õ·Î Ãß°¡µÇ´Â °¹¼ö¸¦ ÆÄ¾ÇÇÑ´Ù.
+	//ìƒˆë¡œ ì¶”ê°€ë˜ëŠ” ê°¯ìˆ˜ë¥¼ íŒŒì•…í•œë‹¤.
 	int addNumber = 0;
 	while(data.Next()) {
 		int vnum = atoi(data.AsStringByIndex(0));
@@ -424,29 +424,29 @@ bool BuildMobTable()
 	TMobTable * mob_table = m_pMobTable;
 
 
-	//data¸¦ ´Ù½Ã Ã¹ÁÙ·Î ¿Å±ä´Ù.(´Ù½Ã ÀĞ¾î¿Â´Ù;;)
+	//dataë¥¼ ë‹¤ì‹œ ì²«ì¤„ë¡œ ì˜®ê¸´ë‹¤.(ë‹¤ì‹œ ì½ì–´ì˜¨ë‹¤;;)
 	data.Destroy();
 	if(!data.Load("mob_proto.txt",'\t'))
 	{
-		fprintf(stderr, "mob_proto.txt ÆÄÀÏÀ» ÀĞ¾î¿ÀÁö ¸øÇß½À´Ï´Ù\n");
+		fprintf(stderr, "mob_proto.txt íŒŒì¼ì„ ì½ì–´ì˜¤ì§€ ëª»í–ˆìŠµë‹ˆë‹¤\n");
 		return false;
 	}
-	data.Next(); //¸Ç À­ÁÙ Á¦¿Ü (¾ÆÀÌÅÛ Ä®·³À» ¼³¸íÇÏ´Â ºÎºĞ)
+	data.Next(); //ë§¨ ìœ—ì¤„ ì œì™¸ (ì•„ì´í…œ ì¹¼ëŸ¼ì„ ì„¤ëª…í•˜ëŠ” ë¶€ë¶„)
 
 	while (data.Next())
 	{
 		int col = 0;
-		//Å×½ºÆ® ÆÄÀÏ¿¡ °°Àº vnumÀÌ ÀÖ´ÂÁö Á¶»ç.
+		//í…ŒìŠ¤íŠ¸ íŒŒì¼ì— ê°™ì€ vnumì´ ìˆëŠ”ì§€ ì¡°ì‚¬.
 		std::map<DWORD, TMobTable *>::iterator it_map_mobTable;
 		it_map_mobTable = test_map_mobTableByVnum.find(atoi(data.AsStringByIndex(col)));
 		if(it_map_mobTable == test_map_mobTableByVnum.end()) {
 			
 			if (!Set_Proto_Mob_Table(mob_table, data, localMap))
 			{
-				fprintf(stderr, "¸÷ ÇÁ·ÎÅä Å×ÀÌºí ¼ÂÆÃ ½ÇÆĞ.\n");			
+				fprintf(stderr, "ëª¹ í”„ë¡œí†  í…Œì´ë¸” ì…‹íŒ… ì‹¤íŒ¨.\n");			
 			}
 
-		} else {	//$$$$$$$$$$$$$$$$$$$$$$$ Å×½ºÆ® ¸ó½ºÅÍ Á¤º¸°¡ ÀÖ´Ù!	
+		} else {	//$$$$$$$$$$$$$$$$$$$$$$$ í…ŒìŠ¤íŠ¸ ëª¬ìŠ¤í„° ì •ë³´ê°€ ìˆë‹¤!	
 			TMobTable *tempTable = it_map_mobTable->second;
 
 			mob_table->dwVnum               = tempTable->dwVnum;
@@ -493,7 +493,7 @@ bool BuildMobTable()
 
 		fprintf(stdout, "MOB #%-5d %-16s %-16s sight: %u color %u[%s]\n", mob_table->dwVnum, mob_table->szName, mob_table->szLocaleName, mob_table->wAggressiveSight, mob_table->dwMobColor, 0);
 
-		//¼Â¿¡ vnum Ãß°¡
+		//ì…‹ì— vnum ì¶”ê°€
 		vnumSet.insert(mob_table->dwVnum);
 
 		++mob_table;
@@ -502,22 +502,22 @@ bool BuildMobTable()
 
 
 	//============================//
-	//===== Å×½ºÆ® Á¤º¸ Ãß°¡ =====//
-	//%%ÁÖÀÇ%%
-	//%% -> »õ·Î¿î Á¤º¸¸¸ Ãß°¡µÊ  //
-	//Áßº¹µÇ´Â Á¤º¸´Â À§¿¡¼­ Ãß°¡ //
+	//===== í…ŒìŠ¤íŠ¸ ì •ë³´ ì¶”ê°€ =====//
+	//%%ì£¼ì˜%%
+	//%% -> ìƒˆë¡œìš´ ì •ë³´ë§Œ ì¶”ê°€ë¨  //
+	//ì¤‘ë³µë˜ëŠ” ì •ë³´ëŠ” ìœ„ì—ì„œ ì¶”ê°€ //
 	//============================//
 	test_data.Destroy();
 	if(!test_data.Load("mob_proto_test.txt",'\t'))
 	{
-		fprintf(stderr, "mob_proto_test.txt ÆÄÀÏÀ» ÀĞ¾î¿ÀÁö ¸øÇß½À´Ï´Ù\n");
+		fprintf(stderr, "mob_proto_test.txt íŒŒì¼ì„ ì½ì–´ì˜¤ì§€ ëª»í–ˆìŠµë‹ˆë‹¤\n");
 		//return false;
 	} else {
-		test_data.Next();	//¼³¸í ·Î¿ì ³Ñ¾î°¡±â.
+		test_data.Next();	//ì„¤ëª… ë¡œìš° ë„˜ì–´ê°€ê¸°.
 
-		while (test_data.Next())	//Å×½ºÆ® µ¥ÀÌÅÍ °¢°¢À» ÈÈ¾î³ª°¡¸ç,»õ·Î¿î °ÍÀ» Ãß°¡ÇÑ´Ù.
+		while (test_data.Next())	//í…ŒìŠ¤íŠ¸ ë°ì´í„° ê°ê°ì„ í›‘ì–´ë‚˜ê°€ë©°,ìƒˆë¡œìš´ ê²ƒì„ ì¶”ê°€í•œë‹¤.
 		{
-			//Áßº¹µÇ´Â ºÎºĞÀÌ¸é ³Ñ¾î°£´Ù.
+			//ì¤‘ë³µë˜ëŠ” ë¶€ë¶„ì´ë©´ ë„˜ì–´ê°„ë‹¤.
 			set<int>::iterator itVnum;
 			itVnum=vnumSet.find(atoi(test_data.AsStringByIndex(0)));
 			if (itVnum != vnumSet.end()) {
@@ -527,12 +527,12 @@ bool BuildMobTable()
 			
 			if (!Set_Proto_Mob_Table(mob_table, test_data, localMap))
 			{
-				fprintf(stderr, "¸÷ ÇÁ·ÎÅä Å×ÀÌºí ¼ÂÆÃ ½ÇÆĞ.\n");			
+				fprintf(stderr, "ëª¹ í”„ë¡œí†  í…Œì´ë¸” ì…‹íŒ… ì‹¤íŒ¨.\n");			
 			}
 
 			fprintf(stdout, "[New]MOB #%-5d %-16s sight: %u color %u[%s]\n", mob_table->dwVnum, mob_table->szLocaleName, mob_table->wAggressiveSight, mob_table->dwMobColor, test_data.AsStringByIndex(54));
 
-			//¼Â¿¡ vnum Ãß°¡
+			//ì…‹ì— vnum ì¶”ê°€
 			vnumSet.insert(mob_table->dwVnum);
 
 			++mob_table;
@@ -639,18 +639,18 @@ void LoadMobProto()
 //==													==//
 //==													==//
 //==													==//
-//===== ¿©±â¿¡¼­ºÎÅÍ ¾ÆÀÌÅÛ =====//
+//===== ì—¬ê¸°ì—ì„œë¶€í„° ì•„ì´í…œ =====//
 //==													==//
 //==													==//
 //==													==//
 
 bool Set_Proto_Item_Table(TClientItemTable *itemTable, cCsvTable &csvTable, std::map<int,const char*> &nameMap)
 {
-	// vnum ¹× vnum range ÀĞ±â.
+	// vnum ë° vnum range ì½ê¸°.
 	{
 		std::string s(csvTable.AsStringByIndex(0));
 		int pos = s.find("~");
-		// vnum ÇÊµå¿¡ '~'°¡ ¾ø´Ù¸é ÆĞ½º
+		// vnum í•„ë“œì— '~'ê°€ ì—†ë‹¤ë©´ íŒ¨ìŠ¤
 		if (std::string::npos == pos)
 		{
 			itemTable->dwVnum = atoi(s.c_str());
@@ -681,13 +681,13 @@ bool Set_Proto_Item_Table(TClientItemTable *itemTable, cCsvTable &csvTable, std:
 	int col = 1;
 
 	strncpy(itemTable->szName, csvTable.AsStringByIndex(col++), ITEM_NAME_MAX_LEN);
-	//³×ÀÓ ÆÄÀÏÀÌ Á¸ÀçÇÏ¸é Á¤º¸¸¦ ÀĞ¾î¿È.
+	//ë„¤ì„ íŒŒì¼ì´ ì¡´ì¬í•˜ë©´ ì •ë³´ë¥¼ ì½ì–´ì˜´.
 	map<int,const char*>::iterator it;
 	it = nameMap.find(itemTable->dwVnum);
 	if (it != nameMap.end()) {
 		const char * localeName = it->second;
 		strncpy(itemTable->szLocaleName, localeName, sizeof(itemTable->szLocaleName));
-	} else { //³×ÀÓ ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾ÊÀ¸¸é ÇÑ±Û·Î..
+	} else { //ë„¤ì„ íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•Šìœ¼ë©´ í•œê¸€ë¡œ..
 		strncpy(itemTable->szLocaleName, itemTable->szName, sizeof(itemTable->szLocaleName));
 	}
 	itemTable->bType = get_Item_Type_Value(csvTable.AsStringByIndex(col++));
@@ -731,35 +731,35 @@ bool Set_Proto_Item_Table(TClientItemTable *itemTable, cCsvTable &csvTable, std:
 
 bool BuildItemTable()
 {
-	//%%% <ÇÔ¼ö ¼³¸í> %%%//
-	//1. ¿ä¾à : 'item_proto.txt', 'item_proto_test.txt', 'item_names.txt' ÆÄÀÏÀ» ÀĞ°í,
-	//		m_pItemTable ¸¦ ±¸¼ºÇÑ´Ù.
-	//2. ¼ø¼­
-	//	1)'item_names.txt' ÆÄÀÏÀ» ÀĞ¾î¼­ vnum:name ¸ÊÀ» ¸¸µç´Ù.
-	//	2)'item_proto_test.txt' ÆÄÀÏÀ» ÀĞ¾î¼­,
-	//		test_item_table ¸¦ ¸¸µé°í,
-	//		vnum:TClientItemTable ¸ÊÀ» ¸¸µç´Ù.
-	//	3)'item_proto.txt' ÆÄÀÏÀ» ÀĞ°í, m_pItemTable¸¦ ±¸¼ºÇÑ´Ù.
-	//		test_item_table¿¡ ÀÖ´Â vnumÀº Å×½ºÆ® µ¥ÀÌÅÍ¸¦ ³Ö´Â´Ù.
-	//	4)test_item_table µ¥ÀÌÅÍÁß¿¡, m_pItemTable ¿¡ ¾ø´Â µ¥ÀÌÅÍ¸¦ Ãß°¡ÇÑ´Ù.
-	//3. Å×½ºÆ®
-	//	1)'item_proto.txt' Á¤º¸°¡ m_pItemTable¿¡ Àß µé¾î°¬´ÂÁö.
-	//	2)'item_names.txt' Á¤º¸°¡ m_pItemTable¿¡ Àß µé¾î°¬´ÂÁö.
-	//	3)'item_proto_test.txt' ¿¡¼­ [°ãÄ¡´Â] Á¤º¸°¡ m_pItemTable ¿¡ Àß µé¾î°¬´ÂÁö.
-	//	4)'item_proto_test.txt' ¿¡¼­ [»õ·Î¿î] Á¤º¸°¡ m_pItemTable ¿¡ Àß µé¾î°¬´ÂÁö.
+	//%%% <í•¨ìˆ˜ ì„¤ëª…> %%%//
+	//1. ìš”ì•½ : 'item_proto.txt', 'item_proto_test.txt', 'item_names.txt' íŒŒì¼ì„ ì½ê³ ,
+	//		m_pItemTable ë¥¼ êµ¬ì„±í•œë‹¤.
+	//2. ìˆœì„œ
+	//	1)'item_names.txt' íŒŒì¼ì„ ì½ì–´ì„œ vnum:name ë§µì„ ë§Œë“ ë‹¤.
+	//	2)'item_proto_test.txt' íŒŒì¼ì„ ì½ì–´ì„œ,
+	//		test_item_table ë¥¼ ë§Œë“¤ê³ ,
+	//		vnum:TClientItemTable ë§µì„ ë§Œë“ ë‹¤.
+	//	3)'item_proto.txt' íŒŒì¼ì„ ì½ê³ , m_pItemTableë¥¼ êµ¬ì„±í•œë‹¤.
+	//		test_item_tableì— ìˆëŠ” vnumì€ í…ŒìŠ¤íŠ¸ ë°ì´í„°ë¥¼ ë„£ëŠ”ë‹¤.
+	//	4)test_item_table ë°ì´í„°ì¤‘ì—, m_pItemTable ì— ì—†ëŠ” ë°ì´í„°ë¥¼ ì¶”ê°€í•œë‹¤.
+	//3. í…ŒìŠ¤íŠ¸
+	//	1)'item_proto.txt' ì •ë³´ê°€ m_pItemTableì— ì˜ ë“¤ì–´ê°”ëŠ”ì§€.
+	//	2)'item_names.txt' ì •ë³´ê°€ m_pItemTableì— ì˜ ë“¤ì–´ê°”ëŠ”ì§€.
+	//	3)'item_proto_test.txt' ì—ì„œ [ê²¹ì¹˜ëŠ”] ì •ë³´ê°€ m_pItemTable ì— ì˜ ë“¤ì–´ê°”ëŠ”ì§€.
+	//	4)'item_proto_test.txt' ì—ì„œ [ìƒˆë¡œìš´] ì •ë³´ê°€ m_pItemTable ì— ì˜ ë“¤ì–´ê°”ëŠ”ì§€.
 	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^//
 
 	fprintf(stderr, "sizeof(TClientItemTable): %u\n", sizeof(TClientItemTable));
 
 	//=================================================================//
-	//	1)'item_names.txt' ÆÄÀÏÀ» ÀĞ¾î¼­ vnum:name ¸ÊÀ» ¸¸µç´Ù.
+	//	1)'item_names.txt' íŒŒì¼ì„ ì½ì–´ì„œ vnum:name ë§µì„ ë§Œë“ ë‹¤.
 	//=================================================================//
 	bool isNameFile = true;
 	map<int,const char*> localMap;
 	cCsvTable nameData;
 	if(!nameData.Load("item_names.txt",'\t'))
 	{
-		fprintf(stderr, "item_names.txt ÆÄÀÏÀ» ÀĞ¾î¿ÀÁö ¸øÇß½À´Ï´Ù\n");
+		fprintf(stderr, "item_names.txt íŒŒì¼ì„ ì½ì–´ì˜¤ì§€ ëª»í–ˆìŠµë‹ˆë‹¤\n");
 		isNameFile = false;
 	} else {
 		nameData.Next();
@@ -770,33 +770,33 @@ bool BuildItemTable()
 	//_________________________________________________________________//
 
 	//===================== =======================//
-	//	2)'item_proto_test.txt' ÆÄÀÏÀ» ÀĞ¾î¼­,
-	//		test_item_table ¸¦ ¸¸µé°í,
-	//		vnum:TClientItemTable ¸ÊÀ» ¸¸µç´Ù.
+	//	2)'item_proto_test.txt' íŒŒì¼ì„ ì½ì–´ì„œ,
+	//		test_item_table ë¥¼ ë§Œë“¤ê³ ,
+	//		vnum:TClientItemTable ë§µì„ ë§Œë“ ë‹¤.
 	//=============================================//
 	map<DWORD, TClientItemTable *> test_map_itemTableByVnum;
 
-	//1. ÆÄÀÏ ÀĞ¾î¿À±â.
+	//1. íŒŒì¼ ì½ì–´ì˜¤ê¸°.
 	cCsvTable test_data;
 	if(!test_data.Load("item_proto_test.txt",'\t'))
 	{
-		fprintf(stderr, "item_proto_test.txt ÆÄÀÏÀ» ÀĞ¾î¿ÀÁö ¸øÇß½À´Ï´Ù\n");
+		fprintf(stderr, "item_proto_test.txt íŒŒì¼ì„ ì½ì–´ì˜¤ì§€ ëª»í–ˆìŠµë‹ˆë‹¤\n");
 		//return false;
 	} else {
-		test_data.Next();	//¼³¸í ·Î¿ì ³Ñ¾î°¡±â.
+		test_data.Next();	//ì„¤ëª… ë¡œìš° ë„˜ì–´ê°€ê¸°.
 
-		//2. Å×½ºÆ® ¾ÆÀÌÅÛ Å×ÀÌºí »ı¼º.
+		//2. í…ŒìŠ¤íŠ¸ ì•„ì´í…œ í…Œì´ë¸” ìƒì„±.
 		TClientItemTable * test_item_table = NULL;
 		int test_itemTableSize = test_data.m_File.GetRowCount()-1;
 		test_item_table = new TClientItemTable[test_itemTableSize];
 		memset(test_item_table, 0, sizeof(TClientItemTable) * test_itemTableSize);
 
-		//3. Å×½ºÆ® ¸ó½ºÅÍ Å×ÀÌºí¿¡ °ªÀ» ³Ö°í, ¸Ê¿¡±îÁö ³Ö±â.
+		//3. í…ŒìŠ¤íŠ¸ ëª¬ìŠ¤í„° í…Œì´ë¸”ì— ê°’ì„ ë„£ê³ , ë§µì—ê¹Œì§€ ë„£ê¸°.
 		while(test_data.Next()) {
 			
 			if (!Set_Proto_Item_Table(test_item_table, test_data, localMap))
 			{
-				fprintf(stderr, "¸÷ ÇÁ·ÎÅä Å×ÀÌºí ¼ÂÆÃ ½ÇÆĞ.\n");			
+				fprintf(stderr, "ëª¹ í”„ë¡œí†  í…Œì´ë¸” ì…‹íŒ… ì‹¤íŒ¨.\n");			
 			}
 
 
@@ -809,21 +809,21 @@ bool BuildItemTable()
 
 
 	//================================================================//
-	//	3)'item_proto.txt' ÆÄÀÏÀ» ÀĞ°í, m_pItemTable¸¦ ±¸¼ºÇÑ´Ù.
-	//		test_item_table¿¡ ÀÖ´Â vnumÀº Å×½ºÆ® µ¥ÀÌÅÍ¸¦ ³Ö´Â´Ù.
+	//	3)'item_proto.txt' íŒŒì¼ì„ ì½ê³ , m_pItemTableë¥¼ êµ¬ì„±í•œë‹¤.
+	//		test_item_tableì— ìˆëŠ” vnumì€ í…ŒìŠ¤íŠ¸ ë°ì´í„°ë¥¼ ë„£ëŠ”ë‹¤.
 	//================================================================//
 
-	//vnumµéÀ» ÀúÀåÇÒ ¼Â. »õ·Î¿î Å×½ºÆ® ¾ÆÀÌÅÛÀ» ÆÇº°ÇÒ¶§ »ç¿ëµÈ´Ù.
+	//vnumë“¤ì„ ì €ì¥í•  ì…‹. ìƒˆë¡œìš´ í…ŒìŠ¤íŠ¸ ì•„ì´í…œì„ íŒë³„í• ë•Œ ì‚¬ìš©ëœë‹¤.
 	set<int> vnumSet;
 
-	//ÆÄÀÏ ÀĞ¾î¿À±â.
+	//íŒŒì¼ ì½ì–´ì˜¤ê¸°.
 	cCsvTable data;
 	if(!data.Load("item_proto.txt",'\t'))
 	{
-		fprintf(stderr, "item_proto.txt ÆÄÀÏÀ» ÀĞ¾î¿ÀÁö ¸øÇß½À´Ï´Ù\n");
+		fprintf(stderr, "item_proto.txt íŒŒì¼ì„ ì½ì–´ì˜¤ì§€ ëª»í–ˆìŠµë‹ˆë‹¤\n");
 		return false;
 	}
-	data.Next(); //¸Ç À­ÁÙ Á¦¿Ü (¾ÆÀÌÅÛ Ä®·³À» ¼³¸íÇÏ´Â ºÎºĞ)
+	data.Next(); //ë§¨ ìœ—ì¤„ ì œì™¸ (ì•„ì´í…œ ì¹¼ëŸ¼ì„ ì„¤ëª…í•˜ëŠ” ë¶€ë¶„)
 
 	if (m_pItemTable)
 	{
@@ -831,8 +831,8 @@ bool BuildItemTable()
 		m_pItemTable = NULL;
 	}
 
-	//===== ¾ÆÀÌÅÛ Å×ÀÌºí »ı¼º =====//
-	//»õ·Î Ãß°¡µÇ´Â °¹¼ö¸¦ ÆÄ¾ÇÇÑ´Ù.
+	//===== ì•„ì´í…œ í…Œì´ë¸” ìƒì„± =====//
+	//ìƒˆë¡œ ì¶”ê°€ë˜ëŠ” ê°¯ìˆ˜ë¥¼ íŒŒì•…í•œë‹¤.
 	int addNumber = 0;
 	while(data.Next()) {
 		int vnum = atoi(data.AsStringByIndex(0));
@@ -842,14 +842,14 @@ bool BuildItemTable()
 			addNumber++;
 		}
 	}
-	//data¸¦ ´Ù½Ã Ã¹ÁÙ·Î ¿Å±ä´Ù.(´Ù½Ã ÀĞ¾î¿Â´Ù;;)
+	//dataë¥¼ ë‹¤ì‹œ ì²«ì¤„ë¡œ ì˜®ê¸´ë‹¤.(ë‹¤ì‹œ ì½ì–´ì˜¨ë‹¤;;)
 	data.Destroy();
 	if(!data.Load("item_proto.txt",'\t'))
 	{
-		fprintf(stderr, "item_proto.txt ÆÄÀÏÀ» ÀĞ¾î¿ÀÁö ¸øÇß½À´Ï´Ù\n");
+		fprintf(stderr, "item_proto.txt íŒŒì¼ì„ ì½ì–´ì˜¤ì§€ ëª»í–ˆìŠµë‹ˆë‹¤\n");
 		return false;
 	}
-	data.Next(); //¸Ç À­ÁÙ Á¦¿Ü (¾ÆÀÌÅÛ Ä®·³À» ¼³¸íÇÏ´Â ºÎºĞ)
+	data.Next(); //ë§¨ ìœ—ì¤„ ì œì™¸ (ì•„ì´í…œ ì¹¼ëŸ¼ì„ ì„¤ëª…í•˜ëŠ” ë¶€ë¶„)
 
 	m_iItemTableSize = data.m_File.GetRowCount()-1+addNumber;
 	m_pItemTable = new TClientItemTable[m_iItemTableSize];
@@ -861,7 +861,7 @@ bool BuildItemTable()
 	{
 		int col = 0;
 
-		//Å×½ºÆ® ÆÄÀÏ¿¡ °°Àº vnumÀÌ ÀÖ´ÂÁö Á¶»ç.
+		//í…ŒìŠ¤íŠ¸ íŒŒì¼ì— ê°™ì€ vnumì´ ìˆëŠ”ì§€ ì¡°ì‚¬.
 		std::map<DWORD, TClientItemTable *>::iterator it_map_itemTable;
 		it_map_itemTable = test_map_itemTableByVnum.find(atoi(data.AsStringByIndex(col)));
 		if(it_map_itemTable == test_map_itemTableByVnum.end()) {
@@ -869,9 +869,9 @@ bool BuildItemTable()
 			
 			if (!Set_Proto_Item_Table(item_table, data, localMap))
 			{
-				fprintf(stderr, "¸÷ ÇÁ·ÎÅä Å×ÀÌºí ¼ÂÆÃ ½ÇÆĞ.\n");			
+				fprintf(stderr, "ëª¹ í”„ë¡œí†  í…Œì´ë¸” ì…‹íŒ… ì‹¤íŒ¨.\n");			
 			}
-		} else {	//$$$$$$$$$$$$$$$$$$$$$$$ Å×½ºÆ® ¾ÆÀÌÅÛ Á¤º¸°¡ ÀÖ´Ù!	
+		} else {	//$$$$$$$$$$$$$$$$$$$$$$$ í…ŒìŠ¤íŠ¸ ì•„ì´í…œ ì •ë³´ê°€ ìˆë‹¤!	
 			TClientItemTable *tempTable = it_map_itemTable->second;
 
 			item_table->dwVnum = tempTable->dwVnum;
@@ -929,25 +929,25 @@ bool BuildItemTable()
 				item_table->dwImmuneFlag,
 				item_table->dwRefinedVnum);
 
-		//vnum ÀúÀå.
+		//vnum ì €ì¥.
 		vnumSet.insert(item_table->dwVnum);
 		++item_table;
 	}
 
 	//==========================================================================//
-	//	4)test_item_table µ¥ÀÌÅÍÁß¿¡, m_pItemTable ¿¡ ¾ø´Â µ¥ÀÌÅÍ¸¦ Ãß°¡ÇÑ´Ù.
+	//	4)test_item_table ë°ì´í„°ì¤‘ì—, m_pItemTable ì— ì—†ëŠ” ë°ì´í„°ë¥¼ ì¶”ê°€í•œë‹¤.
 	//==========================================================================//
 	test_data.Destroy();
 	if(!test_data.Load("item_proto_test.txt",'\t'))
 	{
-		fprintf(stderr, "item_proto_test.txt ÆÄÀÏÀ» ÀĞ¾î¿ÀÁö ¸øÇß½À´Ï´Ù\n");
+		fprintf(stderr, "item_proto_test.txt íŒŒì¼ì„ ì½ì–´ì˜¤ì§€ ëª»í–ˆìŠµë‹ˆë‹¤\n");
 		//return false;
 	} else {
-		test_data.Next();	//¼³¸í ·Î¿ì ³Ñ¾î°¡±â.
+		test_data.Next();	//ì„¤ëª… ë¡œìš° ë„˜ì–´ê°€ê¸°.
 
-		while (test_data.Next())	//Å×½ºÆ® µ¥ÀÌÅÍ °¢°¢À» ÈÈ¾î³ª°¡¸ç,»õ·Î¿î °ÍÀ» Ãß°¡ÇÑ´Ù.
+		while (test_data.Next())	//í…ŒìŠ¤íŠ¸ ë°ì´í„° ê°ê°ì„ í›‘ì–´ë‚˜ê°€ë©°,ìƒˆë¡œìš´ ê²ƒì„ ì¶”ê°€í•œë‹¤.
 		{
-			//Áßº¹µÇ´Â ºÎºĞÀÌ¸é ³Ñ¾î°£´Ù.
+			//ì¤‘ë³µë˜ëŠ” ë¶€ë¶„ì´ë©´ ë„˜ì–´ê°„ë‹¤.
 			set<int>::iterator itVnum;
 			itVnum=vnumSet.find(atoi(test_data.AsStringByIndex(0)));
 			if (itVnum != vnumSet.end()) {
@@ -956,7 +956,7 @@ bool BuildItemTable()
 
 			if (!Set_Proto_Item_Table(item_table, test_data, localMap))
 			{
-				fprintf(stderr, "¸÷ ÇÁ·ÎÅä Å×ÀÌºí ¼ÂÆÃ ½ÇÆĞ.\n");			
+				fprintf(stderr, "ëª¹ í”„ë¡œí†  í…Œì´ë¸” ì…‹íŒ… ì‹¤íŒ¨.\n");			
 			}
 
 			fprintf(stdout, "[NEW]ITEM #%-5u %-24s %-24s VAL: %ld %ld %ld %ld %ld %ld WEAR %u ANTI %u IMMUNE %u REFINE %u\n",
@@ -975,7 +975,7 @@ bool BuildItemTable()
 					item_table->dwRefinedVnum);
 
 			
-			//¼Â¿¡ vnum Ãß°¡
+			//ì…‹ì— vnum ì¶”ê°€
 			vnumSet.insert(item_table->dwVnum);
 
 			++item_table;

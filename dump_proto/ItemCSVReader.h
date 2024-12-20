@@ -3,8 +3,8 @@
 
 #include <iostream>
 
-//csv ÆÄÀÏÀ» ÀĞ¾î¿Í¼­ ¾ÆÀÌÅÛ Å×ÀÌºí¿¡ ³Ö¾îÁØ´Ù.
-void putItemIntoTable(); //(Å×ÀÌºí, Å×½ºÆ®¿©ºÎ)
+//csv íŒŒì¼ì„ ì½ì–´ì™€ì„œ ì•„ì´í…œ í…Œì´ë¸”ì— ë„£ì–´ì¤€ë‹¤.
+void putItemIntoTable(); //(í…Œì´ë¸”, í…ŒìŠ¤íŠ¸ì—¬ë¶€)
 
 int get_Item_Type_Value(std::string inputString);
 int get_Item_SubType_Value(int type_value, std::string inputString);
@@ -16,7 +16,7 @@ int get_Item_LimitType_Value(std::string inputString);
 int get_Item_ApplyType_Value(std::string inputString);
 
 
-//¸ó½ºÅÍ ÇÁ·ÎÅäµµ ÀĞÀ» ¼ö ÀÖ´Ù.
+//ëª¬ìŠ¤í„° í”„ë¡œí† ë„ ì½ì„ ìˆ˜ ìˆë‹¤.
 int get_Mob_Rank_Value(std::string inputString);
 int get_Mob_Type_Value(std::string inputString);
 int get_Mob_BattleType_Value(std::string inputString);
